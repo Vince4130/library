@@ -11,6 +11,7 @@ export default class Bibliotheque {
     return this.#listeLivres;
   }
 
+
   /**
    * Description
    *
@@ -26,6 +27,7 @@ export default class Bibliotheque {
     console.log(`Le livre "${livre.titre}" a été ajouté à la bibliothèque`);
   }
 
+
   /**
    * Description
    *
@@ -36,12 +38,16 @@ export default class Bibliotheque {
    * @returns {void}
    */
   afficherLivresDisponibles() {
+    
+    console.log("----------LIVRES DISPONIBLES ------------");
     for (const livre of this.#listeLivres) {
       if (livre.statut) {
         console.log(livre.toString() + " dans la bibliothèque");
+        console.log("-----------------------------------------");
       }
     }
   }
+
 
   /**
    * Description
@@ -54,9 +60,9 @@ export default class Bibliotheque {
    * @returns {any}
    */
   chercherLivre(titre) {
+
     if (!titre || typeof titre !== "string") {
-      console.log("Veuillez fournir un titre valide.");
-      return null;
+      throw new Error("Veuillez fournir un titre valide.");
     }
 
     for (const livre of this.#listeLivres) {
@@ -67,7 +73,19 @@ export default class Bibliotheque {
     return null;
   }
 
+
+  /**
+   * Description
+   * 
+   * @method
+   * @name enregistrerMembre
+   * @kind method
+   * @memberof Bibliotheque
+   * @param {any} membre
+   * @returns {void}
+   */
   enregistrerMembre(membre) {
+    
     if (!this.#listeMembres.includes) {
       this.#listeMembres.push(membre);
       console.log(`Le membre ${membre.getNomComplet()} a été enregistré dans la bibliothèque`);
@@ -75,6 +93,8 @@ export default class Bibliotheque {
       console.log(`Le membre ${membre.getNomComplet()} est déjà enregistré dans la bibliothèque`);
     }
   }
+
+
   /**
    * Description
    *

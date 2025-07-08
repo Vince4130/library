@@ -22,12 +22,13 @@ library.afficherLivresDisponibles();
 // Création de membres
 const membre1 = new Membre(1, "Dupont", "Jean", "toto@sfr.fr");
 const membre2 = new Membre(2, "Martin", "Marie", "mm@gmail.com");
+const membre3 = new Membre(1, "Blanca", "Vince", "v@free.fr");
 
 // Enregistrement des membres dans la bibliothèque
 library.enregistrerMembre(membre1);
 library.enregistrerMembre(membre2);
+library.enregistrerMembre(membre3); 
 
-library.enregistrerMembre(membre1); // Tentative d'enregistrement du même membre
 
 // Emprunter et rendre des livres
 membre1.emprunterLivre(harryPotter);
@@ -36,8 +37,13 @@ membre2.emprunterLivre(leSeigneurDesAnneaux);
 membre2.emprunterLivre(lePetitPrince);
 membre1.emprunterLivre(leComteDeMonteCristo);
 
+membre1.rendreLivre(harryPotter);
+membre1.rendreLivre(shinning);
+
 //membre1.listeEmprunts.map((l) => console.log(l.toString()));
 
 /*console.log(membre2.listeEmprunts);*/
+
+library.afficherLivresDisponibles();
 
 console.log(JSON.stringify(membre1.listeEmprunts, null, 2));
