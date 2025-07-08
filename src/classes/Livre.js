@@ -1,36 +1,21 @@
-import Document from "./Document.js";
-export default class Livre extends Document {
+export default class Livre {
   
-  #nombrePage;
-  /*#titre;
-  #auteur;
-  #statut;*/ 
-  // disponible true, indisponible false
 
-  constructor(titre, auteur, nombrePage, statut = true) {
-    super(titre, auteur, statut);
-    this.#nombrePage = nombrePage;
+  #titre;
+  #auteur;
+  #statut; // disponible true, indisponible false
+
+  constructor(titre, auteur, statut = true) {
+    this.#titre = titre;
+    this.#auteur = auteur;
+    this.#statut = statut;
   }
 
   getType() {
     return "Livre";
   }
-
-  toJSON() {
-    return {
-      typeDuDocument: this.getType(),
-      titre: this.titre,
-      auteur: this.auteur,
-      nombrePage: this.#nombrePage,
-      statut: this.statut
-    };
-  }
-
-  get nombrePage() {
-    return this.#nombrePage;
-  }
   
-  /*emprunter() {
+  emprunter() {
     if (this.#statut) {
       this.#statut = false;
       return true;
@@ -46,9 +31,9 @@ export default class Livre extends Document {
     } else {
       console.log(`Le livre "${this.#titre}" est déjà disponible`);
     }
-  }*/
+  }
 
-  /*get titre() {
+  get titre() {
     return this.#titre;
   }
 
@@ -82,5 +67,5 @@ export default class Livre extends Document {
       auteur: this.#auteur,
       statut: this.#statut,
     };
-  }*/
+  }
 }
