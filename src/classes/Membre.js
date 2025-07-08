@@ -44,6 +44,32 @@ export default class Membre {
     }
   }
   
+   emprunterDocument(document) {
+    if (document.emprunter()) {
+      this.#listeEmprunts.push(document);
+      console.log(
+        `"${document.titre}" a été emprunté par ${this.getNomComplet()}`
+      );
+      return true;
+    } else {
+      console.log(`Le livre "${document.titre}" est déjà emprunté`);
+      return false;
+    }
+  }
+
+  rendreDocument(document) {
+    const index = this.#listeEmprunts.indexOf(document);
+
+    if (index !== -1) {
+      this.#listeEmprunts[index].rendre();
+      this.#listeEmprunts.splice(index, 1);
+      console.log(`Le livre "${document.titre}" a été rendu par ${this.getNomComplet()}`);
+      return true;
+    } else {
+      console.log(`Le livre "${document.titre}" n'a pas été trouvé dans les emprunts de ${this.getNomComplet()}`);
+      return false;
+    }
+  }
   /*rendreLivre(livre) {
     for (let i = 0; i < this.#listeEmprunts.length; i++) {
       if (this.#listeEmprunts[i].titre === livre.titre) {
@@ -91,7 +117,7 @@ export default class Membre {
       nom: this.#nom,
       prenom: this.#prenom,
       email: this.#email,
-      listeEmprunts: this.#listeEmprunts.map((livre) => livre.toJSON()),
+      listeEmprunts: this.#listeEmprunts.map((document) => document.toJSON()),
     };
   }
 }

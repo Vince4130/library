@@ -1,4 +1,4 @@
-import Document from "./Document";
+import Document from "./Document.js";
 
 export default class DVD extends Document {
   

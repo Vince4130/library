@@ -27,5 +27,30 @@ export default class Document {
     }
   }
 
+  get titre() {
+    return this.#titre;
+  }
+
+  set titre(titre) {
+    this.#titre = titre;
+  }
+
+  get auteur() {
+    return this.#auteur;
+  }
+
+  set auteur(auteur) {
+    this.#auteur = auteur;
+  }
+
+  get statut() {
+    return this.#statut;
+  }
+
+  set statut(statut) {
+    this.#statut = statut;
+  }
+
   getType() {}
+  
 }

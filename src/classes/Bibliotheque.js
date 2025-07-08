@@ -1,14 +1,15 @@
+import Document from "./Document.js";
 export default class Bibliotheque {
-  #listeLivres = []; // Liste des livres dans la bibliothèque
+  #listeDocuments = []; // Liste des documents dans la bibliothèque
   #listeMembres = []; // Liste des membres de la bibliothèque
 
   constructor() {
-    this.#listeLivres = [];
+    this.#listeDocuments = [];
     this.#listeMembres = [];
   }
 
-  get listeLivres() {
-    return this.#listeLivres;
+  get listeDocuments() {
+    return this.#listeDocuments;
   }
 
 
@@ -16,15 +17,15 @@ export default class Bibliotheque {
    * Description
    *
    * @method
-   * @name ajouterLivre
+   * @name ajouterDocument
    * @kind method
    * @memberof Bibliotheque
-   * @param {any} livre
+   * @param {any} document
    * @returns {void}
    */
-  ajouterLivre(livre) {
-    this.#listeLivres.push(livre);
-    console.log(`Le livre "${livre.titre}" a été ajouté à la bibliothèque`);
+  ajouterDocument(document) {
+    this.#listeDocuments.push(document);
+    console.log(`Le document "${document.titre}" a été ajouté à la bibliothèque`);
   }
 
 
@@ -32,17 +33,18 @@ export default class Bibliotheque {
    * Description
    *
    * @method
-   * @name afficherLivresDisponibles
+   * @name afficherDocumentsDisponibles
    * @kind method
    * @memberof Bibliotheque
    * @returns {void}
    */
-  afficherLivresDisponibles() {
+  afficherDocumentsDisponibles() {
     
     console.log("----------LIVRES DISPONIBLES ------------");
-    for (const livre of this.#listeLivres) {
-      if (livre.statut) {
-        console.log(livre.toString() + " dans la bibliothèque");
+    for (const document of this.#listeDocuments) {
+      if (document.statut && document instanceof Document) {
+        //console.log(document.toString() + " dans la bibliothèque");
+        console.log(JSON.stringify(document, null, 2));
         console.log("-----------------------------------------");
       }
     }
@@ -53,21 +55,21 @@ export default class Bibliotheque {
    * Description
    *
    * @method
-   * @name chercherLivre
+   * @name chercherDocument
    * @kind method
    * @memberof Bibliotheque
    * @param {any} titre
    * @returns {any}
    */
-  chercherLivre(titre) {
+  chercherDocument(titre) {
 
     if (!titre || typeof titre !== "string") {
       throw new Error("Veuillez fournir un titre valide.");
     }
 
-    for (const livre of this.#listeLivres) {
-      if (livre.titre.toLowerCase() === titre.toLowerCase()) {
-        return livre;
+    for (const document of this.#listeDocuments) {
+      if (document.titre.toLowerCase() === titre.toLowerCase()) {
+        return document;
       }
     }
     return null;

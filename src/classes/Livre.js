@@ -29,7 +29,7 @@ export default class Livre extends Document {
   get nombrePage() {
     return this.#nombrePage;
   }
-  
+}
   /*emprunter() {
     if (this.#statut) {
       this.#statut = false;
@@ -46,9 +46,9 @@ export default class Livre extends Document {
     } else {
       console.log(`Le livre "${this.#titre}" est déjà disponible`);
     }
-  }*/
+  }
 
-  /*get titre() {
+  get titre() {
     return this.#titre;
   }
 
@@ -82,5 +82,5 @@ export default class Livre extends Document {
       auteur: this.#auteur,
       statut: this.#statut,
     };
-  }*/
-}
+  }
+    */

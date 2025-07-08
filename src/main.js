@@ -1,7 +1,11 @@
 import Livre from "./classes/Livre.js";
 import Membre from "./classes/Membre.js";
+import Revue from "./classes/Revue.js";
+import DVD from "./classes/DVD.js";
+
 import Bibliotheque from "./classes/Bibliotheque.js";
 
+// Création de la bibliothèque
 const library = new Bibliotheque();
 
 // Création de livres
@@ -11,13 +15,32 @@ const leSeigneurDesAnneaux = new Livre("J.R.R. Tolkien", "Le Seigneur des Anneau
 const lePetitPrince = new Livre("Antoine de Saint-Exupéry", "Le Petit Prince");
 const leComteDeMonteCristo = new Livre("Alexandre Dumas", "Le Comte de Monte-Cristo");
 
+const dvd1 = new DVD("Film", "Film 1", 120, "Action");
+const dvd2 = new DVD("Film", "Film 2", 150, "Aventure");
+
+// Création de revues
+const revue1 = new Revue("Revue", "Revue 1", 1);
+const revue2 = new Revue("Revue", "Revue 2", 2);
+
 // Ajout des livres à la bibliothèque
-library.ajouterLivre(shinning);
+/*library.ajouterLivre(shinning);
 library.ajouterLivre(harryPotter);
 library.ajouterLivre(leSeigneurDesAnneaux);
 library.ajouterLivre(lePetitPrince);
 library.ajouterLivre(leComteDeMonteCristo);
-library.afficherLivresDisponibles();
+library.afficherLivresDisponibles();*/
+
+library.ajouterDocument(shinning);
+library.ajouterDocument(harryPotter);
+library.ajouterDocument(leSeigneurDesAnneaux);
+library.ajouterDocument(lePetitPrince); 
+library.ajouterDocument(leComteDeMonteCristo);
+library.ajouterDocument(dvd1);
+library.ajouterDocument(dvd2);
+library.ajouterDocument(revue1);
+library.ajouterDocument(revue2);
+
+library.afficherDocumentsDisponibles();
 
 // Création de membres
 const membre1 = new Membre(1, "Dupont", "Jean", "toto@sfr.fr");
@@ -40,10 +63,13 @@ membre1.emprunterLivre(leComteDeMonteCristo);
 membre1.rendreLivre(harryPotter);
 membre1.rendreLivre(shinning);
 
+membre1.emprunterDocument(dvd1);
+membre1.emprunterDocument(revue1);
+
 //membre1.listeEmprunts.map((l) => console.log(l.toString()));
 
 /*console.log(membre2.listeEmprunts);*/
 
-library.afficherLivresDisponibles();
+//library.afficherLivresDisponibles();
 
 console.log(JSON.stringify(membre1.listeEmprunts, null, 2));
