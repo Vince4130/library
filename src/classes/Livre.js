@@ -1,18 +1,35 @@
 import Document from "./Document.js";
 export default class Livre extends Document {
   
+  #nombrePage;
   /*#titre;
   #auteur;
   #statut;*/ 
   // disponible true, indisponible false
 
-  constructor(titre, auteur, statut = true) {
+  constructor(titre, auteur, nombrePage, statut = true) {
     super(titre, auteur, statut);
+    this.#nombrePage = nombrePage;
   }
 
   getType() {
     return "Livre";
   }
+
+  toJSON() {
+    return {
+      typeDuDocument: this.getType(),
+      titre: this.titre,
+      auteur: this.auteur,
+      nombrePage: this.#nombrePage,
+      statut: this.statut
+    };
+  }
+
+  get nombrePage() {
+    return this.#nombrePage;
+  }
+  
   /*emprunter() {
     if (this.#statut) {
       this.#statut = false;
