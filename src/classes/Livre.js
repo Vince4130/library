@@ -6,7 +6,7 @@ export default class Livre {
   #statut; // disponible true, indisponible false
 
   constructor(titre, auteur, statut = true) {
-    this.#titre = titre;
+    this.#titre  = titre;
     this.#auteur = auteur;
     this.#statut = statut;
   }
